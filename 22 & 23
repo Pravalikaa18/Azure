@@ -15,16 +15,6 @@ Examples of IaaS in Azure:
 
    Virtual Networks (VNet): A private network within Azure for securely connecting resources.
 
-Use Cases of IaaS:
-   Hosting websites or applications that need full control over their virtual machines.
-
-   Running custom applications with specific infrastructure requirements.
-
-   Extending on-premises infrastructure to the cloud.
-
-
-
-
 2) Platform as a Service (PaaS)
 
    PaaS in Azure provides a complete platform for developing, running, and managing applications without having to worry about underlying infrastructure or operating systems.
@@ -49,9 +39,6 @@ Use Cases of PaaS:
    Building microservices-based architectures using Azure Functions or Azure Kubernetes Service.
 
    Managing database and application backend services with minimal administrative overhead.
-
-
-
 
 3) Software as a Service (SaaS)
 
@@ -93,7 +80,7 @@ Support for multiple languages such as .NET, Java, Python, Node.js, and more.
 
 
 
-------------------Security Concerns in IaaS, PaaS, and SaaS
+------Security Concerns in IaaS, PaaS, and SaaS
 IaaS Security Risks:
 
 IaaS exposes more of the infrastructure to users, which means managing the operating system, applications, and network security is the user's responsibility.
