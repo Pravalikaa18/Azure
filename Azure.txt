@@ -1,0 +1,281 @@
+1) Infrastructure as a Service (IaaS):
+    IaaS in Azure provides virtualized computing resources over the internet. It offers infrastructure services like virtual machines (VMs), storage,   networking, and other resources without the need to manage the underlying hardware.
+
+Key Characteristics:
+  Full control over the operating system, applications, and network settings.
+
+  Users are responsible for configuring, managing, and maintaining the operating system, applications, and networking.
+
+  Ideal for workloads requiring custom configurations or where the customer wants to retain control over the infrastructure.
+
+Examples of IaaS in Azure:
+   Virtual Machines (VMs): Allows you to create and manage scalable virtual machines that can run different operating systems and applications.
+
+   Azure Storage: A variety of storage options, including Blob Storage, Disk Storage, and File Storage, to manage your data.
+
+   Virtual Networks (VNet): A private network within Azure for securely connecting resources.
+
+Use Cases of IaaS:
+   Hosting websites or applications that need full control over their virtual machines.
+
+   Running custom applications with specific infrastructure requirements.
+
+   Extending on-premises infrastructure to the cloud.
+
+
+
+
+2) Platform as a Service (PaaS)
+
+   PaaS in Azure provides a complete platform for developing, running, and managing applications without having to worry about underlying infrastructure or operating systems.
+
+Key Characteristics:
+  The cloud provider manages the underlying infrastructure, operating system, and runtime environment.
+
+  Developers can focus on building and deploying applications, using built-in tools for application management, scaling, and monitoring.
+
+  PaaS is ideal for developing, testing, and deploying web applications without the need to manage infrastructure or hardware.
+
+Examples of PaaS in Azure:
+    Azure App Services (Web Apps): A fully managed platform for building and hosting web applications in various programming languages (e.g., .NET, Node.js, Java).
+
+    Azure SQL Database: A fully managed relational database with high availability and built-in intelligence for scaling and managing database workloads.
+
+    Azure Functions: A serverless compute service that lets you run event-driven code without managing the infrastructure.
+
+Use Cases of PaaS:
+   Developing and deploying web or mobile applications.
+
+   Building microservices-based architectures using Azure Functions or Azure Kubernetes Service.
+
+   Managing database and application backend services with minimal administrative overhead.
+
+
+
+
+3) Software as a Service (SaaS)
+
+   SaaS in Azure delivers fully managed software applications over the internet. SaaS users access these applications via a web browser without worrying about managing or maintaining the infrastructure or platform.
+
+Key Characteristics:
+   The service provider manages everything, including infrastructure, platform, and software updates.
+
+   SaaS applications are ready to use with no installation required.
+
+   Ideal for end-users or businesses who need a ready-to-use application for specific tasks.
+
+Examples of SaaS in Azure:
+    Office 365: A suite of productivity tools, including Word, Excel, PowerPoint, and Outlook, all delivered through the cloud.
+
+    Microsoft Teams: A collaboration platform that integrates chat, video meetings, file sharing, and other teamwork tools.
+
+    Azure DevOps: A set of development tools for managing the application lifecycle, from version control to build automation and deployment.
+
+Use Cases of SaaS:
+   Using productivity tools like Office 365 for team collaboration and document management.
+
+   Using Microsoft Teams for communication and file sharing across organizations.
+
+   Managing development workflows through Azure DevOps for continuous integration/continuous deployment (CI/CD).
+
+
+
+
+Azure Web App:
+Azure Web App is a fully managed platform for building, deploying, and scaling web apps. Azure Web Apps is a part of Azure App Service and provides a platform to host web applications, REST APIs, and mobile backends. Some key features:
+
+Automatic scaling and load balancing.
+
+Integration with databases and storage solutions.
+
+Support for multiple languages such as .NET, Java, Python, Node.js, and more.
+
+
+
+
+------------------Security Concerns in IaaS, PaaS, and SaaS
+IaaS Security Risks:
+
+IaaS exposes more of the infrastructure to users, which means managing the operating system, applications, and network security is the user's responsibility.
+
+Common Attacks:
+
+  Data breaches
+
+  Denial-of-service (DoS) attacks
+
+  Vulnerabilities in virtual machine configurations
+
+PaaS Security Risks:
+
+In PaaS, security is shared between the cloud provider and the customer. While the cloud provider manages the infrastructure, the customer needs to focus on securing their application and data.
+
+Common Attacks:
+
+  Misconfiguration vulnerabilities
+
+  Insufficient authentication and authorization
+
+  API security risks
+
+SaaS Security Risks:
+
+SaaS models have the least amount of user control, as the application is fully managed by the provider. However, there are still potential security concerns related to user data and access management.
+
+Common Attacks:
+
+  Data leakage
+
+  Account hijacking
+
+  Service interruptions due to cyberattacks
+
+
+
+
+
+Functional Requirements (FR):
+Functional requirements specify what a system should do. They describe the specific behaviors, actions, or functions the system must have to meet the needs of its users. Essentially, functional requirements define the capabilities of the system.
+
+Examples of Functional Requirements:
+    Login Feature: The system must allow users to log in using their email and password.
+
+    Order Processing: The system must allow customers to add items to their shopping cart and complete a checkout process.
+
+    User Management: The system must allow administrators to create, edit, or delete user accounts.
+
+    Data Retrieval: The system must be able to retrieve and display a list of products from the database.
+
+Characteristics of Functional Requirements:
+    Focus on specific actions or operations of the system.
+
+    Can be expressed as user stories or use cases.
+
+    Directly related to the system's core functionality.
+
+
+
+
+
+Non-Functional Requirements (NFR):
+Non-functional requirements specify how a system performs its functions. They define the quality attributes and operational aspects of the system, such as its performance, scalability, security, and availability. These requirements help ensure the system works effectively and meets the users' expectations in terms of system qualities.
+
+Examples of Non-Functional Requirements:
+    Performance: The system must handle 1000 concurrent users without degradation in speed.
+
+    Scalability: The system must be able to scale horizontally to support a growing number of users.
+
+    Availability: The system must have 99.9% uptime.
+
+    Security: The system must encrypt sensitive user data using AES-256 encryption.
+
+    Usability: The system’s user interface must be simple and intuitive for new users.
+
+Characteristics of Non-Functional Requirements:
+    Focus on system quality and performance.
+
+    Often more general and can apply across multiple features or parts of the system.
+
+    Can be measured or quantified (e.g., performance benchmarks, security standards).
+
+
+
+
+Compile-Time Caching: This helps speed up the build process, particularly when dealing with large data or images.
+
+Runtime Caching: Helps to reduce latency by storing frequently used data.
+
+
+
+
+Alpine Linux is a security-focused, lightweight Linux distribution. Alpine is commonly used in Docker images because it is minimal, meaning it has a small footprint, which is ideal for containerized applications.
+
+Benefits of Alpine Image:
+
+   Small size (~5 MB).
+
+   Minimal attack surface.
+   
+   Network
+
+
+
+
+Kubernetes supports multiple scaling strategies for applications:
+
+Horizontal Scaling (Horizontal Pod Autoscaling):
+
+    Involves adding or removing instances (pods) of an application based on metrics like CPU or memory usage.
+
+Vertical Scaling (Vertical Pod Autoscaling):
+
+    Involves adjusting the resources (CPU, memory) allocated to a pod to meet demand.
+
+Cluster Scaling:
+
+    Involves adding or removing nodes (virtual machines) to the Kubernetes cluster based on the workload.
+
+
+
+
+Bastion Host:
+A Bastion Host is a server that acts as a gateway between a private network and the public internet. It is used to securely access servers in a private network (e.g., in a VNet). Bastion Hosts are configured with limited access and hardened security to minimize risk.
+
+
+
+
+VNet (Azure): A VNet in Azure is a private network that allows communication between resources such as VMs, databases, and storage within the cloud.
+
+
+
+Region: A geographical area containing multiple data centers. Azure regions are large geographic locations, and each region consists of multiple Availability Zones.
+
+Availability Zones: These are physically separate locations within a region, designed to provide high availability by isolating failures and ensuring services continue running.
+
+Zones: These refer to the individual fault-tolerant locations within a region.
+
+
+
+
+Deployment Models:
+   Deployment models describe how resources are distributed in the cloud:
+
+   Public Cloud: Resources are shared across multiple organizations.
+
+   Private Cloud: Resources are used exclusively by one organization.
+
+   Hybrid Cloud: A mix of both private and public cloud resources.
+
+
+
+Express Gateways:
+    An Express Gateway in Azure connects on-premises networks to the Azure cloud via a dedicated private connection. ExpressRoute provides more reliability, speed, and security than traditional internet connections.
+
+
+
+VNet/VPC Peering:
+VNet/VPC Peering allows virtual networks to connect to each other and share resources. It is typically used when resources are distributed across multiple VNets/VPCs.
+
+Key Requirement: The IP address ranges of the peered VNets must be different to avoid conflicts.
+
+Advantages of Peering:
+
+    Cost-Effective: Without peering, transferring data between VNets requires using public IPs or VPNs, which can be costly.
+
+    Security: Peering allows for private, secure connections between VNets.
+
+    Reduced Latency: Communication within peered networks is faster since it avoids the public internet.
+
+
+
+
+Azure Services: Creation and Scaling
+Azure Subscription & Resource Groups: Subscriptions are containers for billing and resource management. Resource groups help organize and manage resources.
+
+VM Scale Sets: Automatically scale VM instances based on demand. It integrates with Azure Load Balancer for distributing traffic across instances.
+
+Availability Sets: Distributes VMs across fault domains, ensuring that at least one instance of a VM remains available in case of hardware failure.
+
+
+
+
