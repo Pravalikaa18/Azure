@@ -217,11 +217,10 @@ VNet (Azure): A VNet in Azure is a private network that allows communication bet
 
 Region: A geographical area containing multiple data centers. Azure regions are large geographic locations, and each region consists of multiple Availability Zones.
 
-Availability Zones: These are physically separate locations within a region, designed to provide high availability by isolating failures and ensuring services continue running.
-
-Zones: These refer to the individual fault-tolerant locations within a region.
-
-
+Availability Zones:•They’re physically separate data centers in the same Azure region.
+•	Each zone has independent power, network, and cooling.
+•	You deploy VMs, apps, or services across zones for high availability.
+•	Even if an entire data center (zone) fails — your app still runs in the others
 
 
 Deployment Models:
@@ -259,9 +258,19 @@ Advantages of Peering:
 Azure Services: Creation and Scaling
 Azure Subscription & Resource Groups: Subscriptions are containers for billing and resource management. Resource groups help organize and manage resources.
 
-VM Scale Sets: Automatically scale VM instances based on demand. It integrates with Azure Load Balancer for distributing traffic across instances.
+VM Scale Sets: Automatically scale VM instances based on demand. It integrates with Azure Load Balancer for distributing traffic across instances.A Virtual Machine Scale Set is a way to automatically deploy and manage a group of identical VMs.
+It's designed for auto-scaling based on demand (like CPU usage, requests, etc.) — perfect for web apps, APIs, or backend systems that need to handle variable load.
 
 Availability Sets: Distributes VMs across fault domains, ensuring that at least one instance of a VM remains available in case of hardware failure.
+When you run multiple VMs in Azure (for example, a web server and a backup server), you want to make sure they don’t all go down together — whether it's due to a hardware issue or a software update.
+
+So, Azure uses an Availability Set to spread those VMs out across:
+
+Fault Domains (FD):
+These are different physical racks in the datacenter. If one rack fails (power/network issue), only the VMs on that rack go down — others stay running.
+
+Update Domains (UD):
+These are used when Azure performs planned maintenance (like patching). Azure will only update one domain at a time, so at least one VM always stays online.
 
 
 
