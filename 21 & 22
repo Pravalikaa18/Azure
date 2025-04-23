@@ -256,7 +256,16 @@ Advantages of Peering:
 
 
 Azure Services: Creation and Scaling
-Azure Subscription & Resource Groups: Subscriptions are containers for billing and resource management. Resource groups help organize and manage resources.
+Azure Subscription & Resource Groups: Subscriptions are containers for billing and resource management.
+An Azure Subscription is like your billing account. It determines:
+
+What resources you can use
+
+How much you’re charged
+
+And helps you apply quotas, policies, and access controls
+Resource groups help organize and manage resources.
+A Resource Group is a logical container for Azure resources (VMs, Web Apps, DBs, etc.) that share the same lifecycle, permissions, and policies.
 
 VM Scale Sets: Automatically scale VM instances based on demand. It integrates with Azure Load Balancer for distributing traffic across instances.A Virtual Machine Scale Set is a way to automatically deploy and manage a group of identical VMs.
 It's designed for auto-scaling based on demand (like CPU usage, requests, etc.) — perfect for web apps, APIs, or backend systems that need to handle variable load.
