@@ -1,0 +1,468 @@
+1) Infrastructure as a Service (IaaS):
+    IaaS in Azure provides virtualized computing resources over the internet. It offers infrastructure services like virtual machines (VMs), storage,   networking, and other resources without the need to manage the underlying hardware.
+
+Key Characteristics:
+  Full control over the operating system, applications, and network settings.
+
+  Users are responsible for configuring, managing, and maintaining the operating system, applications, and networking.
+
+  Ideal for workloads requiring custom configurations or where the customer wants to retain control over the infrastructure.
+
+Examples of IaaS in Azure:
+   Virtual Machines (VMs): Allows you to create and manage scalable virtual machines that can run different operating systems and applications.
+
+   Azure Storage: A variety of storage options, including Blob Storage, Disk Storage, and File Storage, to manage your data.
+
+   Virtual Networks (VNet): A private network within Azure for securely connecting resources.
+
+2) Platform as a Service (PaaS)
+
+   PaaS in Azure provides a complete platform for developing, running, and managing applications without having to worry about underlying infrastructure or operating systems.
+
+Key Characteristics:
+  The cloud provider manages the underlying infrastructure, operating system, and runtime environment.
+
+  Developers can focus on building and deploying applications, using built-in tools for application management, scaling, and monitoring.
+
+  PaaS is ideal for developing, testing, and deploying web applications without the need to manage infrastructure or hardware.
+
+Examples of PaaS in Azure:
+    Azure App Services (Web Apps): A fully managed platform for building and hosting web applications in various programming languages (e.g., .NET, Node.js, Java).
+
+    Azure SQL Database: A fully managed relational database with high availability and built-in intelligence for scaling and managing database workloads.
+
+    Azure Functions: A serverless compute service that lets you run event-driven code without managing the infrastructure.
+
+Use Cases of PaaS:
+   Developing and deploying web or mobile applications.
+
+   Building microservices-based architectures using Azure Functions or Azure Kubernetes Service.
+
+   Managing database and application backend services with minimal administrative overhead.
+
+3) Software as a Service (SaaS)
+
+   SaaS in Azure delivers fully managed software applications over the internet. SaaS users access these applications via a web browser without worrying about managing or maintaining the infrastructure or platform.
+
+Key Characteristics:
+   The service provider manages everything, including infrastructure, platform, and software updates.
+
+   SaaS applications are ready to use with no installation required.
+
+   Ideal for end-users or businesses who need a ready-to-use application for specific tasks.
+
+Examples of SaaS in Azure:
+    Office 365: A suite of productivity tools, including Word, Excel, PowerPoint, and Outlook, all delivered through the cloud.
+
+    Microsoft Teams: A collaboration platform that integrates chat, video meetings, file sharing, and other teamwork tools.
+
+    Azure DevOps: A set of development tools for managing the application lifecycle, from version control to build automation and deployment.
+
+Use Cases of SaaS:
+   Using productivity tools like Office 365 for team collaboration and document management.
+
+   Using Microsoft Teams for communication and file sharing across organizations.
+
+   Managing development workflows through Azure DevOps for continuous integration/continuous deployment (CI/CD).
+
+
+
+
+Azure Web App:
+Azure Web App is a fully managed platform for building, deploying, and scaling web apps. Azure Web Apps is a part of Azure App Service and provides a platform to host web applications, REST APIs, and mobile backends. Some key features:
+
+Automatic scaling and load balancing.
+
+Integration with databases and storage solutions.
+
+Support for multiple languages such as .NET, Java, Python, Node.js, and more.
+
+
+
+
+------Security Concerns in IaaS, PaaS, and SaaS
+IaaS Security Risks:
+
+IaaS exposes more of the infrastructure to users, which means managing the operating system, applications, and network security is the user's responsibility.
+
+Common Attacks:
+
+  Data breaches
+
+  Denial-of-service (DoS) attacks
+
+  Vulnerabilities in virtual machine configurations
+
+PaaS Security Risks:
+
+In PaaS, security is shared between the cloud provider and the customer. While the cloud provider manages the infrastructure, the customer needs to focus on securing their application and data.
+
+Common Attacks:
+
+  Misconfiguration vulnerabilities
+
+  Insufficient authentication and authorization
+
+  API security risks
+
+SaaS Security Risks:
+
+SaaS models have the least amount of user control, as the application is fully managed by the provider. However, there are still potential security concerns related to user data and access management.
+
+Common Attacks:
+
+  Data leakage
+
+  Account hijacking
+
+  Service interruptions due to cyberattacks
+
+
+
+
+
+Functional Requirements (FR):
+Functional requirements specify what a system should do. They describe the specific behaviors, actions, or functions the system must have to meet the needs of its users. Essentially, functional requirements define the capabilities of the system.
+
+Examples of Functional Requirements:
+    Login Feature: The system must allow users to log in using their email and password.
+
+    Order Processing: The system must allow customers to add items to their shopping cart and complete a checkout process.
+
+    User Management: The system must allow administrators to create, edit, or delete user accounts.
+
+    Data Retrieval: The system must be able to retrieve and display a list of products from the database.
+
+Characteristics of Functional Requirements:
+    Focus on specific actions or operations of the system.
+
+    Can be expressed as user stories or use cases.
+
+    Directly related to the system's core functionality.
+
+
+
+
+
+Non-Functional Requirements (NFR):
+Non-functional requirements specify how a system performs its functions. They define the quality attributes and operational aspects of the system, such as its performance, scalability, security, and availability. These requirements help ensure the system works effectively and meets the users' expectations in terms of system qualities.
+
+Examples of Non-Functional Requirements:
+    Performance: The system must handle 1000 concurrent users without degradation in speed.
+
+    Scalability: The system must be able to scale horizontally to support a growing number of users.
+
+    Availability: The system must have 99.9% uptime.
+
+    Security: The system must encrypt sensitive user data using AES-256 encryption.
+
+    Usability: The system’s user interface must be simple and intuitive for new users.
+
+Characteristics of Non-Functional Requirements:
+    Focus on system quality and performance.
+
+    Often more general and can apply across multiple features or parts of the system.
+
+    Can be measured or quantified (e.g., performance benchmarks, security standards).
+
+
+
+
+Compile-Time Caching: This helps speed up the build process, particularly when dealing with large data or images.
+
+Runtime Caching: Helps to reduce latency by storing frequently used data.
+
+
+
+
+Alpine Linux is a security-focused, lightweight Linux distribution. Alpine is commonly used in Docker images because it is minimal, meaning it has a small footprint, which is ideal for containerized applications.
+
+Benefits of Alpine Image:
+
+   Small size (~5 MB).
+
+   Minimal attack surface.
+   
+   Network
+
+
+
+
+Kubernetes supports multiple scaling strategies for applications:
+
+Horizontal Scaling (Horizontal Pod Autoscaling):
+
+    Involves adding or removing instances (pods) of an application based on metrics like CPU or memory usage.
+
+Vertical Scaling (Vertical Pod Autoscaling):
+
+    Involves adjusting the resources (CPU, memory) allocated to a pod to meet demand.
+
+Cluster Scaling:
+
+    Involves adding or removing nodes (virtual machines) to the Kubernetes cluster based on the workload.
+
+
+
+
+Bastion Host:
+A Bastion Host is a server that acts as a gateway between a private network and the public internet. It is used to securely access servers in a private network (e.g., in a VNet). Bastion Hosts are configured with limited access and hardened security to minimize risk.
+
+
+
+
+VNet (Azure): A VNet in Azure is a private network that allows communication between resources such as VMs, databases, and storage within the cloud.
+
+
+
+Region: A geographical area containing multiple data centers. Azure regions are large geographic locations, and each region consists of multiple Availability Zones.
+
+Availability Zones:•They’re physically separate data centers in the same Azure region.
+•	Each zone has independent power, network, and cooling.
+•	You deploy VMs, apps, or services across zones for high availability.
+•	Even if an entire data center (zone) fails — your app still runs in the others
+
+
+Deployment Models:
+   Deployment models describe how resources are distributed in the cloud:
+
+   Public Cloud: Resources are shared across multiple organizations.
+
+   Private Cloud: Resources are used exclusively by one organization.
+
+   Hybrid Cloud: A mix of both private and public cloud resources.
+
+
+
+Express Gateways:
+    An Express Gateway in Azure connects on-premises networks to the Azure cloud via a dedicated private connection. ExpressRoute provides more reliability, speed, and security than traditional internet connections.
+
+
+
+VNet/VPC Peering:
+VNet/VPC Peering allows virtual networks to connect to each other and share resources. It is typically used when resources are distributed across multiple VNets/VPCs.
+
+Key Requirement: The IP address ranges of the peered VNets must be different to avoid conflicts.
+
+Advantages of Peering:
+
+    Cost-Effective: Without peering, transferring data between VNets requires using public IPs or VPNs, which can be costly.
+
+    Security: Peering allows for private, secure connections between VNets.
+
+    Reduced Latency: Communication within peered networks is faster since it avoids the public internet.
+
+
+
+
+Azure Services: Creation and Scaling
+Azure Subscription & Resource Groups: Subscriptions are containers for billing and resource management. Resource groups help organize and manage resources.
+
+VM Scale Sets: Automatically scale VM instances based on demand. It integrates with Azure Load Balancer for distributing traffic across instances.A Virtual Machine Scale Set is a way to automatically deploy and manage a group of identical VMs.
+It's designed for auto-scaling based on demand (like CPU usage, requests, etc.) — perfect for web apps, APIs, or backend systems that need to handle variable load.
+
+Availability Sets: Distributes VMs across fault domains, ensuring that at least one instance of a VM remains available in case of hardware failure.
+When you run multiple VMs in Azure (for example, a web server and a backup server), you want to make sure they don’t all go down together — whether it's due to a hardware issue or a software update.
+
+So, Azure uses an Availability Set to spread those VMs out across:
+
+Fault Domains (FD):
+These are different physical racks in the datacenter. If one rack fails (power/network issue), only the VMs on that rack go down — others stay running.
+
+Update Domains (UD):
+These are used when Azure performs planned maintenance (like patching). Azure will only update one domain at a time, so at least one VM always stays online.
+
+
+
+
+
+
+
+
+Feature	Scenario
+Availability Set	Protect against rack-level failure within one data center
+Availability Zone	 Protect against entire data center failure
+What are Availability Zones in Azure?
+1.	They’re physically separate data centers in the same Azure region.
+2.	Each zone has independent power, network, and cooling.
+3.	You deploy VMs, apps, or services across zones for high availability.
+4.	Even if an entire data center (zone) fails — your app still runs in the others
+What is an Azure Region?
+An Azure region is a set of data centers deployed within a specific geographic location and connected via a low-latency network.
+What is a VM Scale Set in Azure?
+A Virtual Machine Scale Set is a way to automatically deploy and manage a group of identical VMs. It's designed for auto-scaling based on demand (like CPU usage, requests, etc.) — perfect for web apps, APIs, or backend systems that need to handle variable load.
+ 
+
+23-04-2025
+
+10.0.0.0/24 10.0.0.0- 10.0.0.255              32-24=8  2^8=256
+To create network
+Network—  1       2           4       8      16      32     64     128     256
+Host—        256   128    64     32     16      8        4       2            1
+Subnet--   /24     /25    /26   /27  /28    /29     /30    /31       /32
+
+
+                   IP Range                                              Network IP                                Broadcast IP                      CIDR
+Team 1- 10.0.0.1-10.0.0.62                           10.0.0.0                                       10.0.0.63                     10.0.0/26
+Team 2- 10.0.0.65-10.0.0.126                       10.0.0.64                                    10.0.0.127         10.0.0.64/26
+Team 3 - 10.0.0.129-10.0.0.190                   10.0.0.128                                 10.0.0.191        10.0.0128/26
+
+CREATING VNET & SUBNETS:
+3 Subents:
+1.Frontend
+2.Backend
+3.Private
+
+STEPS TO CREATE VNET & SUBNET :
+Step 1 : Create a Vnet
+Step 2: Create 3 subnets 
+Step 3: We created 3 VM’s for each subnet name prav-frontend,prav-backend,prav-pvrt
+Step 4: By default when ever we create the VM’s a default security group will be created for 3 Vm’s.(prav-frontend nsg,prav-backend nsg, prav-pvrt nsg)
+Step 5 : We will be creating 2 NSG’s  Prav-public , Prav-pvrt and will be allocating backend ,frontend to the public NSG and pvrt to the pvrt NSG.
+Step 6: To allocate the NSG’s to the public & private NSG 1st we need to stop the VM’s 
+Step 7: Next we will disallocate the NSG’s in prav-frontend nsg,prav-backend nsg, prav-pvrt nsg
+Step 8 : Go to the Prav-Public,Prav-pvrt and Add the subnets .
+
+In public add prav-frontend& prav-backend , in pvrt add prav-pvrt
+Step 9: 
+ 
+24-04-2025
+
+Regional pairs:
+Regional pairs are pre-defined sets of two Azure regions within the same geography (e.g., within the same country or continent), created by Microsoft to ensure:
+1.	High availability
+2.	Data residency
+3.	Disaster recovery (DR)
+When you deploy services across a regional pair, Azure ensures at least one of the regions is available, even during large-scale outages.
+Edge Locations:
+An Edge Location is a small data center closer to the end-users that is part of a Content Delivery Network (CDN). Edge locations are distributed all around the world—in major cities and populated areas. These locations are chosen to reduce latency by being physically closer to users
+(605)
+Azure Resource Group:
+An Azure Resource Group is a container that holds related resources for an Azure solution. These resources can include virtual machines, databases, storage accounts, web apps, networks, and more.
+Think of it like a folder where you group resources that share a common lifecycle—you deploy, manage, and monitor them together.
+Example
+Let’s say you're deploying a web app:
+You can create a resource group called WebApp-RG and include:
+1.	Azure App Service (for the web app)
+2.	Azure SQL Database
+3.	Azure Storage Account
+4.	Application Insights (monitoring)
+
+All these can be deployed together, monitored together, and even deleted together when no longer needed.
+Azure resources:
+1.Logical Containers
+2.No nesting 
+3.Global uniqueness
+Benefits:
+1.Cost management: easy to tracks costs associated with in a specific application or project by grouping its resources as a single unit.
+2.Logical organization: Group resources based on application , enivronement(dev,prod,test)
+3. Deployment and Deletion: Deploy and delete entire application stacks or environments as a single unit.
+Manage Resource Groups :
+1.Azure CLI
+2.Azure Portal
+3.ARM Template
+4.Azure Powershell
+5.Azure SDK’s
+Azure resource manager:
+1.It is a deployment and management service for azure .It acts as the control plane for all the resources.
+2.Consistent State Management: ARM ensures that your resources are deployed in a consistent state. If a deployment of multiple resources fails, ARM can automatically roll back the changes, preventing partially configured environments.
+3.Integration with Azure AD: ARM integrates with Azure Active Directory (Azure AD) for authentication and authorization, enabling you to manage access control and enforce policies consistently across your Azure resources.
+Azure Subscriptions:
+An Azure Subscription is like a container for your Azure resources. It defines a billing boundary and a management boundary for using Azure services.
+You can have many subscriptions to one account and subscription is associated to the payments.
+Feature	Description
+Billing Boundary	All costs from services used under a subscription go to a single invoice.
+Resource Limit	Sets quotas for resources (e.g., number of VMs, storage capacity).
+Access Control	You can assign RBAC (Role-Based Access Control) at the subscription level.
+Isolation	Resources in one subscription are isolated from others unless explicitly linked.
+	
+Azure Entra id:
+Microsoft Entra ID is the new name for Azure Active Directory (Azure AD).
+It's Microsoft’s cloud-based identity and access management (IAM) service. It that helps organizations manage:
+1.	User authentication (sign-in)
+2.	Access control to apps and resources
+3.	Security policies (like MFA, conditional access)
+4.	Device identity
+5.	App registration & SSO
+🧠 Think of Entra ID as the "brain" behind login and identity in Azure and Microsoft Cloud.
+
+
+
+Azure tenant:
+🏢 What is an Azure Tenant?
+Definition:
+An Azure Tenant is a dedicated, isolated instance of Microsoft Entra ID assigned to an organization when they create a Microsoft cloud account (Azure, Microsoft 365, etc).
+It’s like your company's private identity space in the Microsoft cloud.
+It's like your organization's private version of Microsoft's identity system.
+Each tenant:
+1.	Is unique to your organization
+2.	Has its own users, groups, apps, policies
+3.	Is tied to a domain name, like yourcompany.onmicrosoft.com
+4.	Can have one or more subscriptions
+
+LAB : VNET PEERING
+Step 1 : Created a two vnets. (vnet1,vnet2)
+Step 2 : Created one subnet in each of the vnet : Subnet1 , Subnet 2
+Step 3 : Created VM’s for subnets : VM1,VM2 
+Step4 : We will go to the both NSG’s and allow ICMP protocol for the purpose of communication . 
+Step 5: We will create peering for the vnet1-vnet2 and vnet2-vnet 1
+Step 6 : To check whether peering has been done or not : 
+In VM1 :
+ping @private ip of Vm2
+In VM2:ping@private ip of Vm1
+
+
+Created a user from the main account
+Step 1:  Go to entra id and click on add then click on create new user
+Step 2:  fill required details.
+Step 3 : add group
+Step 4: then review and create
+
+ 
+
+RESOURCE GROUP HIERARCHY:
+ 
+The management group , subscriptions, Resource group, resources are called as scope.
+Management Groups are at the top of the Azure hierarchy. They allow you to group multiple subscriptions under one umbrella, making it easier to apply policies and manage permissions across all subscriptions.
+
+
+
+Azure Commands through CLI:
+az login
+az --version
+az account list
+az account list --output table
+az config set defaults.group="pravalika-rg"
+az account set --subscription "bf7e75db-e819-49ca-b6d2-69c32a2353fe"
+az group list --help
+az group list --query "[?location=='centralindia']"
+az group list --query "[?name=='pravalika-rg']"
+az group list --query "[].name" --output tsv
+az vm list
+az config get defaults
+az vm list -g Admin-Azure
+az vm list -g Admin-Azure --query "[].name" --output tsv
+az vm list -g Admin-Azure --query "[].{Name:name}" --output tsv
+az vm list -g Admin-Azure --query "[].{Name:name, ResourceGroup:resourceGroup}" --output tsv
+az storage account list -g resourcegroupname
+env | grep -i storage
+az vm list-skus --location centralindia --query "[?starts_with(name,'Standard_DS')]" --output table
+az storage account list --query "[?location=="centralindia"]"
+
+Roles define a set of permissions that can be assigned to users, groups, service principals, or managed identities to control access to Azure resources.
+Roles
+--identity
+--users
+--group
+--service principles
+
+RBAC Scope Levels
+
+Scope Level	Example
+Management Group	All subscriptions in the org
+Subscription	Everything inside one subscription
+Resource Group	All resources inside a group
+Resource	Single VM, Storage account, etc.
+
+
+
