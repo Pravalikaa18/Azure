@@ -464,5 +464,92 @@ Subscription	Everything inside one subscription
 Resource Group	All resources inside a group
 Resource	Single VM, Storage account, etc.
 
+IAC-Infrastructure as a code
+Managing infrastructure with code instead of manual work.
+Why do we need IaC?
+•	Consistency: No human mistakes — everything is scripted.
+•	Speed: Set up entire environments (dev, test, prod) in minutes.
+•	Version Control: Store infrastructure code in Git — rollback or track changes easily.
+•	Automation: Integrate infrastructure into CI/CD pipelines.
+•	Scalability: Quickly create or destroy hundreds of resources when needed.
+IaC mainly has three categories:
+1.Infrastructure Provisioning Tools:
+Used to provision (create, modify, sometimes destroy) infrastructure resources like VMs, databases, networks, etc.
+•	Terraform (multicloud – AWS, Azure, GCP)
+•	AWS CloudFormation (AWS native, YAML/JSON templates)
+•	AWS Boto (Python SDK to automate AWS)
+•	Azure ARM templates (JSON format templates for Azure)
+•	Azure Bicep (Simpler syntax than ARM, Azure specific)
+
+2. Configuration Management Tools:
+Used to upgrade, patch, or modify existing servers without deleting them.
+Examples:
+•	Ansible (push-based)
+•	Puppet (pull-based)
+•	Chef (pull-based)
+3. Server Templating Tools:
+    Help create pre-built server environments to save time.
+   Examples:
+•	Vagrant → Creates and manages Virtual Machines easily (for dev/test environments).
+•	Docker → Creates and manages lightweight Containers (package apps + environment together).
+
+TERRAFORM:
+open-source Infrastructure as Code (IaC) tool by HashiCorp.
+It creates, changes, and manages Cloud infrastructure.
+Providers in Terraform?
+Providers are plugins that let Terraform talk to a specific platform (AWS, Azure, Kubernetes, GitHub, etc.)
+Examples:
+•	aws provider → For creating EC2, S3 in AWS.
+•	azurerm provider → For creating resources in Azure.
+•	google provider → For GCP.
+
+In .tf file, you define a provider like this:
+provider "aws" {
+  region = "us-east-1"
+}
+Terraform downloads providers automatically when you run terraform init.
+Terraform init:
+  First command you must run inside a Terraform project folder.
+  It initializes the working directory:
+•	Downloads providers (AWS, Azure, etc.)
+•	Prepares Terraform backend (if you have remote state like S3)
+•	Checks modules
+terraform plan:
+•	Checks your Terraform code and shows what will happen without actually doing it.
+•	It creates an execution plan.
+•	Helps you review the changes before making real updates.
+Terraform Apply:
+•	Executes the plan and makes real changes to the infrastructure.
+•	Actually creates, updates, or deletes resources in cloud platforms.
+•	It asks for confirmation (unless you pass -auto-approve).
+•	After apply, your cloud infra matches your .tf code.
+It compares:
+•	Desired state (from .tf files)
+•	Current state (from terraform.tfstate file)
+Shows a preview:
+•	What will be created
+•	What will be modified
+•	What will be destroyed
+Terraform is Stateful
+•	Terraform tracks what infrastructure it created in a state file (terraform.tfstate).
+•	Without the state, Terraform won’t know:
+o	What resources exist?
+o	What was created by Terraform?
+o	What needs updating or destroying?
+•	The terraform.tfstate file must be stored safely (sometimes in cloud storage like AWS S3 with locking).
+
+What is terraform.lock.hcl File?
+•	Terraform 0.14+ automatically creates a terraform.lock.hcl file.
+•	It locks provider versions for your project.
+•	Guarantees consistent behavior when multiple people work on the same project.
+Example:
+If your project tested with AWS provider version 5.10.0, the lock file remembers it. Even if a newer AWS provider 5.11.0 releases tomorrow, your project still uses 5.10.0.
+✅ Prevents unexpected changes due to provider upgrades.
+
+What is .tf File in Terraform?
+•	.tf files are Terraform configuration files where you write the instructions for infrastructure.
+•	These files describe what you want (servers, databases, networking, etc.).
+
+
 
 
