@@ -544,11 +544,181 @@ What is terraform.lock.hcl File?
 •	Guarantees consistent behavior when multiple people work on the same project.
 Example:
 If your project tested with AWS provider version 5.10.0, the lock file remembers it. Even if a newer AWS provider 5.11.0 releases tomorrow, your project still uses 5.10.0.
-✅ Prevents unexpected changes due to provider upgrades.
+ Prevents unexpected changes due to provider upgrades.
 
 What is .tf File in Terraform?
 •	.tf files are Terraform configuration files where you write the instructions for infrastructure.
 •	These files describe what you want (servers, databases, networking, etc.).
+
+Policy As a Code:
+Policy as Code (PaC) is the practice of defining and managing policies using code, similar to how Infrastructure as Code (IaC) manages infrastructure.
+Instead of manually setting rules in a GUI or documentation, you write them as code—making them automated, version-controlled, testable, and repeatable.
+Why Policy as Code?
+•	Enforces compliance automatically (e.g., only allow certain VM sizes or regions).
+•	Reduces human error (no manual policy checks).
+•	Integrates with CI/CD pipelines.
+•	Auditable and version-controlled (in Git, just like your application or infra code
+Where it's used:
+•	Security rules (e.g., block public S3 buckets).
+•	Governance (e.g., enforce tagging standards).
+•	Cost control (e.g., disallow high-cost resources).
+•	Access control (e.g., IAM policies).
+
+CI & CD in terraform:
+CI/CD with Terraform refers to automating your infrastructure deployments through a Continuous Integration (CI) and Continuous Deployment/Delivery (CD) pipeline—just like you'd automate application deployments.
+
+
+What Happens in CI/CD for Terraform?
+CI (Continuous Integration)
+1.	Developer pushes .tf changes to Git (e.g., GitHub).
+2.	Pipeline automatically:
+o	Runs terraform fmt (code formatting check)
+o	Runs terraform validate (syntax validation)
+o	Runs terraform plan (preview changes)
+o	Optionally stores plan output (.tfplan) for review
+CD (Continuous Delivery or Deployment)
+3.	After manual approval (or automatically, if allowed), it runs:
+o	terraform apply to provision or update the infrastructure
+
+Terraform version 2.40.0
+
+Part	Value	Meaning
+Major	2	Big changes, possibly breaking
+Minor	40	New features, backward-compatible
+Patch	0	Bug fixes, no feature change
+1. MAJOR Version (2 in your example)
+•	Changes the core behavior of the software or tool.
+•	May introduce breaking changes: meaning old code/config may not work anymore without changes.
+•	Usually increased when:
+o	Old APIs/resources are removed or changed.
+o	A redesign of how the tool behaves is released.
+o	Compatibility with older versions is broken.
+Example in Terraform:
+•	Moving from v1.x to v2.0.0 in the azurerm provider introduced breaking changes to how Azure VMs were managed.
+•	Users often need to update .tf files when switching to a new major version.
+________________________________________
+ 2. MINOR Version (40 in your example)
+•	Adds new features or resources, but doesn’t break existing code.
+•	You can safely upgrade to a newer minor version within the same major version.
+•	Often includes:
+o	New arguments in existing resources
+o	Support for new services (e.g., a new Azure resource like Azure Container Apps)
+o	Performance improvements
+Example:
+•	azurerm version 2.39.0 → 2.40.0 might add support for new tags or resources, but your current code works fine without changes.
+________________________________________
+ 3. PATCH Version (0 in your example)
+•	Includes only bug fixes, typos, or very minor improvements.
+•	No new features.
+•	No breaking changes.
+•	Safe to update in nearly all cases.
+Example:
+•	2.40.0 → 2.40.1 may fix a bug in resource creation for azurerm_linux_virtual_machine.
+
+Why Store Terraform State Remotely?
+Storing the terraform.tfstate file remotely helps:
+•	Avoid conflicts when teams work together.
+•	Ensure consistency across deployments.
+•	Enable locking (to prevent parallel operations).
+•	Ensure state is backed up and secure.
+
+Step-by-Step: Remote State Storage in Azure
+1. Create Azure Storage Resources
+Run these commands in your terminal:
+# Create a resource group
+az group create --name tfstate-rg --location southindia
+# Create a storage account (name must be globally unique)
+az storage account create \
+  --name pravalikastatestorage \
+  --resource-group tfstate-rg \
+  --location southindia \
+  --sku Standard_LRS
+# Create a blob container to store the state file
+az storage container create \
+  --name tfstate \
+  --account-name pravalikastatestorage
+
+
+
+
+2. Get the Storage Account Key
+az storage account keys list \
+  --resource-group tfstate-rg \
+  --account-name pravalikastatestorage
+Copy one of the keys from the output
+3. Configure Backend in Your Terraform Code
+Create a backend.tf file (or include this block inside your main.tf):
+terraform {
+  backend "azurerm" {
+    resource_group_name   = "tfstate-rg"
+    storage_account_name  = "pravalikastatestorage"
+    container_name        = "tfstate"
+    key                   = "terraform.tfstate"  # This is the blob name (state file)
+  }
+}
+4. Set Access Key as Environment Variable
+Before you initialize Terraform, export the storage account key:
+export ARM_ACCESS_KEY="your-access-key-here"
+Alternatively, you can use a Terraform-managed service principal with environment variables like ARM_CLIENT_ID, ARM_CLIENT_SECRET, etc.
+5. Initialize Terraform
+terraform init
+You'll see a prompt asking if you want to migrate the existing local state to the new backend — answer yes.
+Now:
+•	Your state file is stored in Azure Blob Storage.
+•	It supports locking with blob leases.
+•	Your team can share and collaborate on infrastructure safely.
+
+
+Storage accounts:
+Blobs-containers
+File servers
+Tables-NOSQL
+Queues
+
+How to create container through storage browser:(Through Azure Portal)
+1.Create a storage account
+2. Go to storage browser
+3. Click on containers and add the container.
+4.upload the file and click on generate sas and down you can see the blob url and copy that and open.
+
+Created storage account (container) through terraform:
+resource "azurerm_resource_group" "example" {
+  name     = "pravalika-rg5"
+  location = "southindia"
+}
+resource "azurerm_storage_account" "example" {
+  name                     = "pravalikasa1"
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}
+resource "azurerm_storage_container" "example" {
+  name                  = "pravalika"
+  storage_account_name    = azurerm_storage_account.example.name
+  container_access_type = "private"
+}
+terraform {
+  required_providers {
+    azurerm = {
+      source = "hashicorp/azurerm"
+      version = "2.40.0"
+    }
+  }
+}
+provider "azurerm" {
+ features{}
+}
+It just created container .After creating we need to upload file and access it through generate sas generate url
+
+Mount storage account (fileshare) into VM:
+Create storage account storage browserfileshare(by clicking connect you can find script) created VMconnected to VM(ssh-keygen -t rsa) ssh -I path user@public ip then run the linux script to mount the storage accountthen open the directory (the path will be in the script)then sudo su  then create folder it will show in azure portal.
+
+
+
+
+
+
 
 
 
